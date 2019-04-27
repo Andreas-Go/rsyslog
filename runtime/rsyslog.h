@@ -581,6 +581,23 @@ enum rsRetVal_				/** return value. All methods return this if not specified oth
 	RS_RET_RABBITMQ_LOGIN_ERR = -2448, /**< RabbitMQ Login error */
 	RS_RET_RABBITMQ_CHANNEL_ERR = -2449, /**< RabbitMQ Connection error */
 	RS_RET_NO_WRKDIR_SET = -2450, /**< working directory not set, but desired by functionality */
+        RS_RET_SOCK_ACCES = -2451, /** access to socket denied */
+        RS_RET_SOCK_AGAIN = -2452, /** socket marked nonblocking but op would block */
+        RS_RET_SOCK_ALREADY = -2453, /** another fast open in progress */ 
+        RS_RET_SOCK_BADF = -2454, /** not valid open file descriptor */
+        RS_RET_SOCK_CONNRESET = -2455, /** connetion reset by peer */
+        RS_RET_SOCK_DESTADDRREQ = -2456, /** socket not in connection mode */ 
+        RS_RET_SOCK_FAULT = -2457, /** invalid user space address for socket */
+        RS_RET_SOCK_INTR = -2458, /** signal occured before any data transmitted */
+        RS_RET_SOCK_INVAL = -2459, /** invalid argument */
+        RS_RET_SOCK_ISCONN = -2460, /** socket connected but no recipient */
+        RS_RET_SOCK_MSGSIZE = -2461, /** message needs to be sent atomically but wrong size */
+	RS_RET_SOCK_NOBUFS = -2462, /** interface output queue full - should not occur in Linux */ 
+	RS_RET_SOCK_NOMEM = -2463, /** no memory available */
+	RS_RET_SOCK_NOTCONN = -2464, /** socket not connected, no target */
+	RS_RET_SOCK_NOTSOCK = -2465, /** file descriptor does not refer to socket */ 
+	RS_RET_SOCK_OPNOTSUPP = -2466, /** socket flags argument inappropriate */
+	RS_RET_SOCK_PIPE = -2467, /** shut down on connection oriented socket */
 
 	/* RainerScript error messages (range 1000.. 1999) */
 	RS_RET_SYSVAR_NOT_FOUND = 1001, /**< system variable could not be found (maybe misspelled) */

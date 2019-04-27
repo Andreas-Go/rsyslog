@@ -712,10 +712,53 @@ Send(nsd_t *pNsd, uchar *pBuf, ssize_t *pLenBuf)
 
 	if(written == -1) {
 		switch(errno) {
+			case EACCES:
+				ABORT_FINALIZE(RS_RET_SOCK_ACCES);
+				break;
 			case EAGAIN:
+				ABORT_FINALIZE(RS_RET_SOCK_AGAIN);
+				break;
+			case EALREADY:
+				ABORT_FINALIZE(RS_RET_SOCK_ALREADY);
+				break;
+			case EBADF:
+				ABORT_FINALIZE(RS_RET_SOCK_BADF);
+				break;
+			case ECONNRESET:
+				ABORT_FINALIZE(RS_RET_SOCK_CONNRESET);
+				break;
+			case EDESTADDRREQ:
+				ABORT_FINALIZE(RS_RET_SOCK_DESTADDRREQ);
+				break;
+			case EFAULT:
+				ABORT_FINALIZE(RS_RET_SOCK_FAULT);
+				break;
+		        case EINVAL:
+			case EISCONN:
 			case EINTR:
 				/* this is fine, just retry... */
 				written = 0;
+				break;
+			case EMSGSIZE:
+				ABORT_FINALIZE(RS_RET_SOCK_MSGSIZE);
+				break;
+			case ENOBUFS:
+				ABORT_FINALIZE(RS_RET_SOCK_NOBUFS);
+				break;
+			case ENOMEM:
+				ABORT_FINALIZE(RS_RET_SOCK_NOMEM);
+				break;
+			case ENOTCONN:
+				ABORT_FINALIZE(RS_RET_SOCK_NOTCONN);
+				break;
+			case ENOTSOCK:
+				ABORT_FINALIZE(RS_RET_SOCK_NOTSOCK);
+				break;
+			case EOPNOTSUPP:
+				ABORT_FINALIZE(RS_RET_SOCK_OPNOTSUPP);
+				break;
+			case EPIPE:
+				ABORT_FINALIZE(RS_RET_SOCK_PIPE);
 				break;
 			default:
 				ABORT_FINALIZE(RS_RET_IO_ERROR);
